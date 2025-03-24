@@ -14,7 +14,7 @@ export class LoginVisibilityDirective {
       private viewContainer: ViewContainerRef,
       private authService: AuthService
     ) {
-        this.subscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
+         this.authService.isLoggedIn$.pipe(takeUntilDestroyed())subscribe(isLoggedIn => {
           isLoggedIn ? this.viewContainer.createEmbeddedView(this.templateRef) : this.viewContainer.clear()
       });
     }
