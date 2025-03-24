@@ -5,8 +5,8 @@ import { BehaviorSubject, Observable, switchMap, take, tap } from 'rxjs';
 @Injectable( )
 export class AuthService { 
 
-  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
-  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+  private isLoggedInSubject: BehaviorSubject<boolean>  = new BehaviorSubject<boolean>(false);
+  readonly isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
